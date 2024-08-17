@@ -3,19 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elevator Simulator</title>
+    <title>Elevator Simulator ⬆️⬇️</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <label for="noOfFloors"
-      >No of Floors :
-      <input type="number" name="noOfFloors" id="noOfFloors" />
-    </label>
+    <header>
+      <h1>Elevator Simulator 🛗</h1>
+      <div id="inputs">
+        <label for="floors"
+          >Number of Floors:
+          <input type="number" id="floors" min="2" />
+        </label>
+        <label for="elevators"
+          >Number of Elevators:
+          <input type="number" id="elevators" min="1" />
+        </label>
+        <button id="generate">Generate</button>
+      </div>
+    </header>
+    <div id="building"></div>
 
-    <label for="noOfElevators"
-      >No of Elevators :
-      <input type="number" name="noOfElevators" id="noOfElevators" />
-    </label>
     <script src="./js/main.js"></script>
   </body>
 </html>
