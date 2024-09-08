@@ -4,24 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elevator Simulator ⬆️⬇️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Honk&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <header>
-      <h1>Elevator Simulator 🛗</h1>
+      <h1>
+        Elevator Simulator
+        <img
+          src="./src/assets/svgs/elevator.svg"
+          alt="elevator svg"
+          width="30px"
+        />
+      </h1>
       <div id="inputs">
-        <label for="floors"
-          >Number of Floors:
-          <input type="number" id="floors" min="2" />
-        </label>
-        <label for="elevators"
-          >Number of Elevators:
-          <input type="number" id="elevators" min="1" />
-        </label>
-        <button id="generate">Generate</button>
+        <div class="floorInput">
+          <label for="floors">Floors :<output id="floorValue">2</output></label>
+          <input
+            type="range"
+            id="floorSlider"
+            min="2"
+            max="50"
+            value="2"
+            step="1"
+          />
+        </div>
+
+        <div class="elevatorInput">
+          <label for="elevators"
+            >Elevators :<output id="elevatorValue">1</output></label
+          >
+          <input
+            type="range"
+            id="elevatorSlider"
+            min="1"
+            max="30"
+            value="1"
+            step="1"
+          />
+        </div>
+
+        <button id="generate" class="genos">Generate</button>
       </div>
     </header>
-    <div id="building"></div>
+    <section id="elevatorsUI"></section>
+    <footer>
+      <span>Created with ❤️ by Nitin Dixit</span>
+      <div class="sourceCodeContainer">
+        <a href="https://github.com/nitinXdixit/Funny-Elevator" target="_blank">
+          <img
+            srcset="./src/assets/svgs/github.svg"
+            alt="source code"
+            width="35"
+            height="35"
+          />
+        </a>
+      </div>
+    </footer>
 
     <script src="./js/main.js"></script>
   </body>

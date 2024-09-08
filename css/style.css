@@ -1,34 +1,110 @@
+:root {
+  --color-primary: hsl(216, 18%, 16%);
+  --color-secondary: hsl(217, 10%, 25%);
+  --color-background: hsl(0, 0%, 90%);
+  --color-tertiary: hsl(183, 100%, 35%);
+
+  --lift-light-color: hsl(55, 100%, 94%);
+  --gate-container-color: hsl(35, 23%, 20%);
+  --gate-border-color: hsl(34, 65%, 35%);
+  --door-color: hsl(0, 0%, 67%);
+
+  --gate-container-height: 8rem;
+  --gate-container-width: 5rem;
+
+  --total-lifts-width: 0px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
 body {
-  font-family: Arial, sans-serif;
+  height: 100%;
+}
+.genos {
+  font-family: "Genos", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+body {
+  font-family: "Genos", sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: whitesmoke;
+  background-color: var(--color-background);
 }
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  h1 {
+    font-family: "Honk", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "MORF" 15, "SHLN" 50;
+  }
 }
 
-input {
-  width: 50px;
-  padding: 5px;
-  margin: 0 10px;
+output {
+  text-align: center;
+  width: 1.5rem;
 }
 label {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
+.sourceCodeContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* a {
+  color: white;
+} */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2rem;
+  /* background-color: var(--color-primary); */
+  /* color: white; */
+}
+
 #inputs {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+#generate {
+  width: 100%;
+  padding: 0.1rem 1rem;
+  border: none;
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  border-radius: 48px;
+}
+
+#generate:active,
+#generate:hover {
+  opacity: 0.88;
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: large;
-  }
   header {
     font-size: small;
   }
