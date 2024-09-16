@@ -213,14 +213,14 @@ function callElevator(floorNumber, dir) {
         elevatorsMovingToFloor[0].calledUsing === dir
       ) {
         return;
-      }No definitions available.
+      }
     }
   }
 
   // Set calling status on the appropriate floor
   if (dir === "up") {
     appState.floors[floorNumber - 1].isCallingUp = true;
-  } else if (dir== "down") {
+  } else if (dir == "down") {
     appState.floors[floorNumber - 1].isCallingDown = true;
   }
 
