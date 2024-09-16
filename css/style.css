@@ -1,51 +1,43 @@
-:root {
-  --color-primary: hsl(216, 18%, 16%);
-  --color-secondary: hsl(217, 10%, 25%);
-  --color-background: hsl(0, 0%, 90%);
-  --color-tertiary: hsl(183, 100%, 35%);
-
-  --lift-light-color: hsl(55, 100%, 94%);
-  --gate-container-color: hsl(35, 23%, 20%);
-  --gate-border-color: hsl(34, 65%, 35%);
-  --door-color: hsl(0, 0%, 67%);
-
-  --gate-container-height: 8rem;
-  --gate-container-width: 5rem;
-
-  --total-lifts-width: 0px;
-}
-
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
 .genos {
   font-family: "Genos", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
-body {
+
+html {
   font-family: "Genos", sans-serif;
-  margin: 0;
-  padding: 20px;
-  background-color: var(--color-background);
+  height: 100%;
 }
-svg {
+body {
+  margin: 0;
+  display: grid;
+  grid-template-rows: 2fr 7fr 1fr;
+  height: 100%;
+  background: #0f0f0f;
+}
+header svg {
   width: 30px;
+  fill: whitesmoke;
+}
+.sourceCodeContainer svg {
+  width: 30px;
+  fill: whitesmoke;
 }
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
 
   h1 {
     font-family: "Honk", system-ui;
@@ -67,6 +59,9 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: large;
 }
 .sourceCodeContainer {
   display: flex;
@@ -74,16 +69,16 @@ label {
   gap: 0.2rem;
 }
 
-/* a {
-  color: white;
-} */
 footer {
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-top: 2rem;
-  /* background-color: var(--color-primary); */
-  /* color: white; */
+  padding: 1rem 0 1rem 0;
+  border-top: 1px solid #cbd5e1;
+  color: white;
+  width: 100%;
+  font-size: larger;
 }
 
 #inputs {
@@ -95,14 +90,28 @@ footer {
 
 #generate {
   width: 100%;
-  padding: 0.1rem 1rem;
+  padding: 0.2rem 0.7rem;
   border: none;
-  background-color: var(--color-primary);
-  color: white;
+  color: black;
   font-size: 1rem;
   cursor: pointer;
   margin-top: 0.5rem;
   border-radius: 48px;
+  background: #ada996; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #generate:active,
@@ -110,11 +119,227 @@ footer {
   opacity: 0.88;
 }
 
+#elevatorsUI {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  padding: 1rem;
+}
+
+.floor {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  height: 100px; /* Fixed height for each floor */
+  padding-left: 10px; /* Space between edge and buttons */
+  padding-right: 10px; /* Space between edge and elevators */
+}
+
+.elevator-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  gap: 2rem;
+}
+
+.floor-number {
+  background-color: whitesmoke;
+  background: linear-gradient(to right, #abbaab, #ffffff);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid grey;
+  text-align: center;
+  margin-right: 0.7rem;
+  
+}
+.floor-buttons {
+  display: flex;
+  padding: 0.5rem;
+  margin-right: 2rem;
+  flex-direction: column;
+  border: 1px solid #ada996;
+  align-items: center;
+  border-radius: 5px;
+  background: #ada996; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  gap: 3px;
+}
+.up-button,
+.down-button {
+  box-shadow: -1px -2px 2px #c4bca3, inset 1px 2px 3px #eeeeee,
+    inset -1px -2px 3px #c4bca3, 2px 6px 16px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  transition: all 0.2s;
+}
+button:active,
+button:hover {
+  /* opacity: 0.8; */
+  box-shadow: -1px -2px 2px #c4bca3, inset 1px 2px 3px #eeeeee,
+    inset -1px -2px 3px #c4bca3, 1px 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+.elevator {
+  position: relative;
+  overflow: hidden; /* Ensure panels stay within elevator bounds */
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: linear-gradient(
+    to right,
+    #2c3e50,
+    #bdc3c7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #ada996; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  z-index: 10;
+  border-bottom: 0;
+  border-top: 10px solid;
+}
+
+.panel {
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  transition: transform 1.5s ease-in-out, background-color 1.5s ease-in-out; /* panel animation */
+}
+
+.left-panel {
+  left: 0;
+  background: #ada996; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-right: 1px solid #ada996;
+}
+
+.right-panel {
+  right: 0;
+  background: #ada996; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-left: 1px solid #ada996;
+}
+
+button.floor-button {
+  padding: 1px 5px;
+  border-radius: 50%;
+  border: 3px double #666664;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+button.up-button {
+  background: #abbaab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #ffffff,
+    #abbaab
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #abbaab
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: black;
+}
+
+button.down-button {
+  background: #abbaab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #ffffff,
+    #abbaab
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #ffffff,
+    #abbaab
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: black;
+}
+
+/* Responsive adjustments for smaller screens */
+
 @media (max-width: 768px) {
   header {
     font-size: small;
   }
+  .input-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .floor {
+    padding-left: 10px; /* Adjust padding for smaller screens */
+    padding-right: 10px;
+  }
+
+  .elevator {
+    width: 50px; /* Smaller elevators on smaller screens */
+  }
 }
+
 @media (max-width: 600px) {
   header {
     display: flex;
@@ -124,6 +349,28 @@ footer {
   }
 }
 
+@media (max-width: 480px) {
+  .floor {
+    /* grid-template-columns: auto 1fr; Maintain grid structure */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  #generate {
+    margin-top: 0;
+  }
+  .elevator {
+    width: 40px; /* Further reduce elevator width for very small screens */
+  }
+
+  .floor-buttons {
+    gap: 2px; /* Minimize space between buttons */
+  }
+
+  button.floor-button {
+    padding: 3px 5px; /* Smaller button padding */
+    font-size: 12px; /* Reduce font size for buttons */
+  }
+}
 @media (max-width: 375px) {
   #inputs {
     display: grid;
